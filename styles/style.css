@@ -1,0 +1,13 @@
+body{
+    margin: 0;
+    background-color: #171327;
+    color: white;
+    font-family: monospace;
+
+}
+
+#start-screen, #game-screen, #end-game{
+    text-align: center;
+    padding: 40px;
+}
+
