@@ -1,127 +1,81 @@
+import { Game } from "./game.js";
+import { Player } from "./player.js";
+
 const startScreen = document.querySelector("#start-screen");
 const gameScreen = document.querySelector("#game-screen");
 const endGame = document.querySelector("#end-game");
+
 const startGame = document.querySelector("#start-btn");
 const restartGame = document.querySelector("#restart-btn");
 
-const speedPlayer = document.querySelector("#speed");
-const overtakesPlayer = document.querySelector("#overtakes");
-const timePlayer = document.querySelector("#time");
-
-const carPlayer = document.querySelector("#car")
-const roadGame = document.querySelector("#road")
-
-//crear los oponentes
-const opp = document.createElement("div")
-opp.classList.add("opponent")
-
-// ocultamos pantallas GAME y ENDGAME
+// Ocultar pantallas al cargar la página
 gameScreen.style.display = "none";
 endGame.style.display = "none";
 
-// click en el boton
+// Crear objetos
+const player = new Player();
+const game = new Game(player); // Estamos pasando el objeto player como argumento al constructor de Game.
+
+
+let movingRight = false;
+let movingLeft = false;
+
+
+// Botón START
 startGame.addEventListener("click", () => {
   startScreen.style.display = "none";
   gameScreen.style.display = "block";
+
   game.updateDisplay();
   game.startTimer();
-  
+  game.startEnemies();
+  game.startPowerUps();
 });
 
+// Botón PLAY AGAIN
 restartGame.addEventListener("click", () => {
   endGame.style.display = "none";
   gameScreen.style.display = "block";
+
   game.resetGame();
   game.startTimer();
+  game.startEnemies();
+  game.startPowerUps();
+  game.startPowerUps();
   
 });
 
-class Game {
-  constructor() {
-    this.time = 60;
-    this.speed = 60;
-    this.overtakes = 0;
+// Movimiento del jugador
+document.addEventListener("keydown", (event) => {
+  if (gameScreen.style.display !== "block") return;
+
+  if (event.key === "ArrowRight") {
+    event.preventDefault();
+    movingRight = true;
+  } else if (event.key === "ArrowLeft") {
+    event.preventDefault();
+    movingLeft = true;
   }
-  increaseSpeed() {
-    this.speed += 20;
+});
+
+// Detectar cuándo dejamos de pulsar las flechas
+document.addEventListener("keyup", (event) => {
+  if (event.key === "ArrowRight") {
+    movingRight = false;
+  } else if (event.key === "ArrowLeft") {
+    movingLeft = false;
   }
-  addOvertake() {
-    this.overtakes += 1;
+});
+
+// Mover el coche continuamente mientras mantenemos pulsada una flecha
+setInterval(() => {
+  if (gameScreen.style.display !== "block") return;
+
+  if (movingRight) {
+    player.moveRight();
   }
-  updateDisplay() {
-    speedPlayer.textContent = `SPEED: ${this.speed}`;
-    overtakesPlayer.textContent = `OVERTAKES: ${this.overtakes}`;
-    timePlayer.textContent = `TIME: ${this.time}`;
+
+  if (movingLeft) {
+    player.moveLeft();
   }
-  startTimer() {
-    const gameTimer = setInterval(() => {
-      // ejecutar una accion cada segundo
-      this.time--;
-      this.updateDisplay(); // actualizar en html
-      if (this.time === 0) {
-        clearInterval(gameTimer);
-        gameScreen.style.display = "none";
-        endGame.style.display = "block";
-      }
-    }, 1000);
-  }
-  resetGame(){
-    this.time = 60
-    this.speed = 60
-    this.overtakes = 0
-    this.updateDisplay();
-  }
-}
-const game = new Game();
-
-
-// player
-
-class Player{
-    constructor(){
-        this.positionX = 175;
-    }
-    moveRight(){
-        if(this.positionX   <= 330){
-            this.positionX += 20
-            this.updatePosition();
-        }
-        
-    }
-    moveLeft(){
-        if(this.positionX  >= 20){
-            this.positionX -= 20
-            this.updatePosition();
-        }
-        
-    }
-    updatePosition() {
-        carPlayer.style.left = `${this.positionX}px`;
-    }
-}
-
-const player = new Player();
-
-document.addEventListener("keydown", (event)=>{
-    if(event.key === "ArrowRight"){
-        player.moveRight();
-    }else if(event.key === "ArrowLeft"){
-        player.moveLeft();
-    }
-    
-})
-
-class Opponent{
-    constructor(){
-        this.positionX = 175;
-        this.positionY = -90
-
-    }
-    moveDown(){
-        this.positionY += 5;
-    }
-    
-
-}
-
-const opponent = new Opponent();
+}, 20);

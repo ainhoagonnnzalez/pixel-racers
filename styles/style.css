@@ -33,3 +33,29 @@ body{
     bottom: 20px;
     left: 175px;
 }
+
+/* OPONENTES */
+.opponent {
+    position: absolute;
+    width: 50px;
+    height: 90px;
+    background-color: #00d9ff;
+    border-radius: 10px;
+    top: -90px;
+    left: 175px;
+}
+
+.rayo {
+  position: absolute;
+  width: 35px;
+  height: 45px;
+
+  font-size: 35px;
+  color: #ffeb00;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 10;
+}
