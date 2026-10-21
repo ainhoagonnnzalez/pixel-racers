@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PIXEL RACERS - Midnight Racing</title>
+
+    <link rel="stylesheet" href="styles/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- PANTALLA DE INICIO -->
+    <div id="start-screen">
+      <div id="start-title">
+        <div id="title-with-flags">
+          <img
+            src="./images/bandera_derecha.png"
+            class="flag"
+            alt="Left flag"
+          />
+
+          <h1>
+            <span>PIXEL</span>
+            <span>RACERS</span>
+          </h1>
+
+          <img
+            src="./images/bandera_izquierda.png"
+            class="flag"
+            alt="Right flag"
+          />
+        </div>
+
+        <h2>MIDNIGHT RACING</h2>
+      </div>
+
+      <button id="start-btn">START GAME</button>
+
+      <div id="start-bottom">
+        <!-- SELECCIÓN DE COCHES -->
+        <div id="car-selection-panel">
+          <h3>CHOOSE YOUR CAR</h3>
+
+          <div id="car-selection">
+            <img
+              src="./images/coche_rosa.png"
+              id="pink-car"
+              class="car-option selected"
+              alt="Pink car"
+            />
+
+            <img
+              src="./images/coche_azul.png"
+              id="blue-car"
+              class="car-option"
+              alt="Blue car"
+            />
+
+            <img
+              src="./images/coche_verde.png"
+              id="green-car"
+              class="car-option"
+              alt="Green car"
+            />
+
+            <img
+              src="./images/coche_naranja.png"
+              id="orange-car"
+              class="car-option"
+              alt="Orange car"
+            />
+          </div>
+        </div>
+
+        <!-- INSTRUCCIONES -->
+        <div id="instructions">
+          <h3>CONTROLS</h3>
+          <p>← → MOVE YOUR CAR</p>
+          <p>⚡ COLLECT BOOSTS</p>
+          <p>🏎️ AVOID CARS</p>
+          <p>❤️ 3 LIVES</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANTALLA DEL JUEGO -->
+    <div id="game-screen">
+      <!-- MARCADOR SUPERIOR -->
+      <div id="game-header">
+        <div class="game-title">
+          <img src="./images/bandera_derecha.png" alt="Flag" />
+          <h2>PIXEL RACERS</h2>
+          <img src="./images/bandera_izquierda.png" alt="Flag" />
+        </div>
+
+        <div id="game-stats">
+          <p id="overtakes">OVERTAKES: 0</p>
+          <p id="time">TIME: 60</p>
+          <p id="lives">LIVES: ❤️❤️❤️</p>
+          <p id="level-display">LEVEL 1</p>
+        </div>
+      </div>
+
+      <!-- ZONA PRINCIPAL -->
+      <div id="game-content">
+        <!-- LATERAL IZQUIERDO -->
+        <div id="left-panel">
+          <div id="item-panel">
+            <h3>ITEMS</h3>
+
+            <div class="item-slot" id="item-rocket">🚀</div>
+            <div class="item-slot" id="item-shield">🛡️</div>
+            <div class="item-slot" id="item-nitro">🔥</div>
+
+            <div id="current-item">ITEM: -</div>
+          </div>
+
+          <div id="speed-panel">
+            <div class="speed-arc"></div>
+            <p id="speed">60</p>
+            <span>KM/H</span>
+          </div>
+        </div>
+
+        <!-- CARRETERA -->
+        <div id="road">
+          <div id="car"></div>
+        </div>
+
+        <!-- LATERAL DERECHO -->
+        <div id="right-panel">
+          <!-- POSICIÓN ACTUAL -->
+          <div id="position-panel">
+            <h3>RACE GOAL</h3>
+
+            <div id="race-goal">0 / 25</div>
+
+            <div id="goal-bar">
+              <div id="goal-progress"></div>
+            </div>
+
+            <p id="goal-message">OVERTAKE 20 CARS!</p>
+          </div>
+
+          <!-- BOOSTS -->
+          <div id="boosts-panel">
+            <p id="boosts">⚡ BOOSTS: 0</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANTALLA FINAL -->
+    <!-- PANTALLA FINAL -->
+    <div id="end-game">
+      <div id="end-panel">
+        <h1 id="end-title">RACE FINISHED</h1>
+
+        <h2 id="end-message">MIDNIGHT RACING</h2>
+        <!-- COPA DEL GANADOR -->
+        <img
+          src="./images/copa.png"
+          id="winner-cup"
+          alt="Winner trophy"
+        />
+
+        <div id="final-results">
+          <div class="result">
+            <p>OVERTAKES</p>
+            <span id="final-overtakes">0 / 25</span>
+          </div>
+
+          <div class="result">
+            <p>TOP SPEED</p>
+            <span id="final-speed">60 KM/H</span>
+          </div>
+
+          <div class="result">
+            <p>TIME LEFT</p>
+            <span id="final-time">0s</span>
+          </div>
+        </div>
+
+        <button id="restart-btn">PLAY AGAIN</button>
+      </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
