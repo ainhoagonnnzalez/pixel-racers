@@ -14,34 +14,21 @@
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
     <!-- PANTALLA DE INICIO -->
     <div id="start-screen">
-      <div id="start-title">
-        <div id="title-with-flags">
-          <img
-            src="./images/bandera_derecha.png"
-            class="flag"
-            alt="Left flag"
-          />
-
-          <h1>
-            <span>PIXEL</span>
-            <span>RACERS</span>
-          </h1>
-
-          <img
-            src="./images/bandera_izquierda.png"
-            class="flag"
-            alt="Right flag"
-          />
-        </div>
-
-        <h2>MIDNIGHT RACING</h2>
-      </div>
-
       <button id="start-btn">START GAME</button>
 
       <div id="start-bottom">
@@ -51,31 +38,31 @@
 
           <div id="car-selection">
             <img
-              src="./images/coche_rosa.png"
+              src="./images/rosa.png"
               id="pink-car"
               class="car-option selected"
               alt="Pink car"
             />
 
             <img
-              src="./images/coche_azul.png"
+              src="./images/llamas.png"
+              id="flames-car"
+              class="car-option"
+              alt="Flames car"
+            />
+
+            <img
+              src="./images/azul.png"
               id="blue-car"
               class="car-option"
               alt="Blue car"
             />
 
             <img
-              src="./images/coche_verde.png"
+              src="./images/verde.png"
               id="green-car"
               class="car-option"
               alt="Green car"
-            />
-
-            <img
-              src="./images/coche_naranja.png"
-              id="orange-car"
-              class="car-option"
-              alt="Orange car"
             />
           </div>
         </div>
@@ -166,11 +153,7 @@
 
         <h2 id="end-message">MIDNIGHT RACING</h2>
         <!-- COPA DEL GANADOR -->
-        <img
-          src="./images/copa.png"
-          id="winner-cup"
-          alt="Winner trophy"
-        />
+        <img src="./images/copa.png" id="winner-cup" alt="Winner trophy" />
 
         <div id="final-results">
           <div class="result">
@@ -193,6 +176,9 @@
       </div>
     </div>
 
+    <!-- MÚSICA DEL JUEGO -->
+
+    <audio id="game-music" src="./audio/musica1.mp3" loop></audio>
     <!-- JAVASCRIPT -->
     <script type="module" src="js/main.js"></script>
   </body>

@@ -9,6 +9,10 @@ const startGame = document.querySelector("#start-btn");
 const restartGame = document.querySelector("#restart-btn");
 const playerCar = document.querySelector("#car");
 
+// MÚSICA DEL JUEGO
+const music = document.querySelector("#game-music");
+music.volume = 0.3;
+
 // COCHES DE LA PANTALLA DE INICIO
 const carOptions = document.querySelectorAll(".car-option");
 let selectedCar = "rosa";
@@ -24,11 +28,14 @@ const game = new Game(player); // Estamos pasando el objeto player como argument
 // Botón START
 
 startGame.addEventListener("click", () => {
+  // Reproducir música
+  music.play();
+
   // Guardar en el juego el color elegido
   game.selectedCar = selectedCar;
 
   // Mostrar la imagen del coche seleccionado
-  playerCar.style.backgroundImage = `url("./images/coche_${selectedCar}.png")`;
+  playerCar.style.backgroundImage = `url("./images/${selectedCar}.png")`;
   playerCar.style.backgroundSize = "contain";
   playerCar.style.backgroundPosition = "center";
   playerCar.style.backgroundRepeat = "no-repeat";
@@ -120,8 +127,8 @@ carOptions.forEach((car) => {
       selectedCar = "azul";
     } else if (car.id === "green-car") {
       selectedCar = "verde";
-    } else if (car.id === "orange-car") {
-      selectedCar = "naranja";
+    } else if (car.id === "flames-car") {
+      selectedCar = "llamas";
     }
 
     console.log("Selected car:", selectedCar);

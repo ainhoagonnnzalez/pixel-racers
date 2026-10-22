@@ -80,6 +80,9 @@ export class Game {
     this.speed = currentLevel.speed;
     this.overtakes = 0;
 
+    // Cambiar el fondo según el nivel
+    gameScreen.style.backgroundImage = `url("./images/ruta66-gameScreen${this.level}.png")`;
+
     this.updateDisplay();
   }
 
@@ -190,7 +193,6 @@ export class Game {
     this.time = 60;
     this.speed = 60;
     this.overtakes = 0;
-    
 
     // Devolver el coche al carril central
     this.player.lane = 1;
@@ -545,10 +547,15 @@ export class Game {
     }
 
     // Mostrar resultados
-    finalOvertakes.textContent = `${this.overtakes} / 25`;
+    const goal = [20, 30, 40][this.level - 1];
+
+    finalOvertakes.textContent = `${this.overtakes} / ${goal}`;
     finalSpeed.textContent = `${finalSpeedValue} KM/H`;
 
     document.querySelector("#final-time").textContent = `${this.time}s`;
+
+    // Fondo de la pantalla final según el nivel
+    endGame.style.backgroundImage = `url("./images/ruta66-gameScreen${this.level}.png")`;
 
     // Mostrar la pantalla final
     gameScreen.style.display = "none";
@@ -561,18 +568,19 @@ export class Game {
     road.style.animationDuration = `${duration}s`;
   }
   // ELEGIR UN COLOR ALEATORIO PARA LOS ENEMIGOS
-  getRandomColor() {
-    const colors = ["rosa", "azul", "verde", "naranja"];
 
-    // Quitar el color elegido por el jugador
+  getRandomColor() {
+    const colors = ["rosa", "llamas", "azul", "verde"];
+
+    // Evitar que aparezca el mismo coche que lleva el jugador
     const availableColors = colors.filter((color) => {
       return color !== this.selectedCar;
     });
 
-    // Elegir uno de los tres colores disponibles
-    const randomNumber = Math.floor(Math.random() * availableColors.length);
+    // Elegir uno aleatoriamente
+    const randomIndex = Math.floor(Math.random() * availableColors.length);
 
-    return availableColors[randomNumber];
+    return availableColors[randomIndex];
   }
   // CREAR Y MOVER CAJAS SORPRESA
   startItems() {
